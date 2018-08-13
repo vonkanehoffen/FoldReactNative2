@@ -9,25 +9,25 @@ import { ApolloProvider } from 'react-apollo';
 import { Rehydrated } from 'aws-appsync-react'
 import ApolloClient from 'apollo-boost'
 
-// export const client = new AWSAppSyncClient({
-//   url: aws_exports.aws_appsync_graphqlEndpoint,
-//   region: aws_exports.aws_appsync_region,
-//   auth: {
-//     type: AUTH_TYPE.API_KEY,
-//     apiKey: 'da2-3hxvdaiazvdtzfrnfnqgwuupsa',
-//   },
-// })
-
-export const client = new ApolloClient({
-  uri: aws_exports.aws_appsync_graphqlEndpoint,
-  request: async (operation) => {
-    operation.setContext({
-      headers: {
-        'X-Api-Key': 'da2-3hxvdaiazvdtzfrnfnqgwuupsa',
-      }
-    })
-  }
+export const client = new AWSAppSyncClient({
+  url: aws_exports.aws_appsync_graphqlEndpoint,
+  region: aws_exports.aws_appsync_region,
+  auth: {
+    type: AUTH_TYPE.API_KEY,
+    apiKey: 'da2-3hxvdaiazvdtzfrnfnqgwuupsa',
+  },
 })
+
+// export const client = new ApolloClient({
+//   uri: aws_exports.aws_appsync_graphqlEndpoint,
+//   request: async (operation) => {
+//     operation.setContext({
+//       headers: {
+//         'X-Api-Key': 'da2-3hxvdaiazvdtzfrnfnqgwuupsa',
+//       }
+//     })
+//   }
+// })
 
 
 const listAll = gql`
@@ -44,17 +44,17 @@ export default class App extends React.Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        {/*<Rehydrated>*/}
+        <Rehydrated>
           <Query query={listAll}>
             {({ data, loading, error, refetch}) => {
               return (
                 <View>
-                  <Text>Response: {JSON.stringify({data, error}, null, 2)}</Text>
+                  <Text>Responseeeeeee: {JSON.stringify({data, error}, null, 2)}</Text>
                 </View>
               )
             }}
           </Query>
-        {/*</Rehydrated>*/}
+        </Rehydrated>
       </ApolloProvider>
     );
   }
