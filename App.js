@@ -1,23 +1,61 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import aws_exports from './aws-exports';
+import AWSAppSyncClient from 'aws-appsync';
+import { AUTH_TYPE } from 'aws-appsync/lib/link/auth-link';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import { ApolloProvider } from 'react-apollo';
+import { Rehydrated } from 'aws-appsync-react'
+import ApolloClient from 'apollo-boost'
+
+// export const client = new AWSAppSyncClient({
+//   url: aws_exports.aws_appsync_graphqlEndpoint,
+//   region: aws_exports.aws_appsync_region,
+//   auth: {
+//     type: AUTH_TYPE.API_KEY,
+//     apiKey: 'da2-3hxvdaiazvdtzfrnfnqgwuupsa',
+//   },
+// })
+
+export const client = new ApolloClient({
+  uri: aws_exports.aws_appsync_graphqlEndpoint,
+  request: async (operation) => {
+    operation.setContext({
+      headers: {
+        'X-Api-Key': 'da2-3hxvdaiazvdtzfrnfnqgwuupsa',
+      }
+    })
+  }
+})
+
+
+const listAll = gql`
+  query listAll {
+    listFolds{
+      items {
+        title
+      }
+    }
+  }
+`
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <ApolloProvider client={client}>
+        {/*<Rehydrated>*/}
+          <Query query={listAll}>
+            {({ data, loading, error, refetch}) => {
+              return (
+                <View>
+                  <Text>Response: {JSON.stringify({data, error}, null, 2)}</Text>
+                </View>
+              )
+            }}
+          </Query>
+        {/*</Rehydrated>*/}
+      </ApolloProvider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
