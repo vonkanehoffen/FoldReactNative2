@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScrollView, Button, AsyncStorage, StyleSheet } from 'react-native'
 import { Auth } from 'aws-amplify'
+import { client } from '../App'
 import MyFolds from './MyFolds'
 import AddButton from '../components/AddButton'
 
@@ -27,7 +28,7 @@ class HomeScreen extends React.Component {
 
   _signOutAsync = async () => {
     await Auth.signOut()
-    AsyncStorage.clear()
+    client.resetStore()
     this.props.navigation.navigate('Auth');
   };
 }
