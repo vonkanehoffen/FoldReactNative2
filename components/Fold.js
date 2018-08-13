@@ -15,7 +15,7 @@ import { View, Text } from 'react-native'
 // `
 const Fold = ({ fold }) => {
   return (
-    <View style={fold.id < 0 ? {background: 'palegreen'} :{}}>
+    <View style={fold.id < 0 ? {backgroundColor: 'palegreen'} :{}}>
       <Text>{fold.title}</Text>
       <Text>{fold.content}</Text>
       {/*{fold.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}*/}

@@ -2,6 +2,7 @@ import React from 'react'
 import { ScrollView, Button, AsyncStorage, StyleSheet } from 'react-native'
 import { Auth } from 'aws-amplify'
 import MyFolds from './MyFolds'
+import AddButton from '../components/AddButton'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -9,11 +10,13 @@ class HomeScreen extends React.Component {
   };
 
   render() {
+    const { navigate } = this.props.navigation
     return (
       <ScrollView >
         <Button title="Show me more of the app" onPress={this._showMoreApp} />
         <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
         <MyFolds filter={[]}/>
+        <AddButton onPress={() => navigate('CreateFold')}/>
       </ScrollView>
     );
   }
@@ -24,6 +27,7 @@ class HomeScreen extends React.Component {
 
   _signOutAsync = async () => {
     await Auth.signOut()
+    AsyncStorage.clear()
     this.props.navigation.navigate('Auth');
   };
 }

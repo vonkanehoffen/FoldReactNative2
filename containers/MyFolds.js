@@ -20,11 +20,8 @@ class MyFolds extends Component {
     return (
       <Query query={listMyFoldsQuery}>
         {({ data, loading, error, refetch}) => {
-
-          console.log("query data = ", data)
           if(loading) return <ActivityIndicator/>
           if(error) {
-            console.log("caught error:", error)
             return (
               <View>
                 <Button onPress={() => {
