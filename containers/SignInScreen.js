@@ -1,15 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { View, Button, AsyncStorage, StyleSheet, ActivityIndicator, TextInput, Text } from 'react-native'
+import { View, Button, StyleSheet, ActivityIndicator, Text } from 'react-native'
 import { Auth } from 'aws-amplify'
+import { TextField } from 'react-native-material-textfield'
+import TextFieldDark from '../components/TextFieldDark'
+import CentreContainer from '../components/CentreContainer'
+import config from '../config'
+import BigButton from '../components/BigButton'
+import Error from '../components/Error'
 
-const Input = styled.TextInput`
-  height: 40px;
-  width:100%;
-  background: #ffffff;
-  margin:10px;
+const StyledSignInScreen = styled.View`
+  width: 90%;
 `
-
 class SignInScreen extends React.Component {
   static navigationOptions = {
     title: 'Please sign in',
@@ -41,47 +43,39 @@ class SignInScreen extends React.Component {
     }
   }
 
-  doSignOut = () => {
-    Auth.signOut()
-    this.setState({ user: false })
-  }
-
   render() {
     const { loading, user, error, username, password } = this.state
 
     if(loading) return <ActivityIndicator />
 
     return (
-      <View style={styles.container}>
-        <Input
-          placeholder="User name"
-          textContentType="username"
-          autoCapitalize="none"
-          onChangeText={(username) => this.setState({username})}
-          value={this.state.username}/>
-        <Input
-          placeholder="Password"
-          textContentType="password"
-          autoCapitalize="none"
-          onChangeText={(password) => this.setState({password})}
-          value={this.state.password}
-          secureTextEntry/>
-        <Button title="Sign in!" onPress={this.doSignIn} />
-        {error && <Text>{error}</Text>}
-      </View>
+      <CentreContainer>
+        <StyledSignInScreen>
+          <TextFieldDark
+            label="User name"
+            textContentType="username"
+            autoCapitalize="none"
+            onChangeText={(username) => this.setState({username})}
+            value={this.state.username}/>
+          <TextFieldDark
+            label="Password"
+            textContentType="password"
+            autoCapitalize="none"
+            onChangeText={(password) => this.setState({password})}
+            value={this.state.password}
+            secureTextEntry/>
+          <BigButton title="Sign in" onPress={this.doSignIn} />
+          {error && <Error>{error}</Error>}
+        </StyledSignInScreen>
+      </CentreContainer>
     );
   }
-  //
-  // _signInAsync = async () => {
-  //   await AsyncStorage.setItem('userToken', 'abc');
-  //   this.props.navigation.navigate('App');
-  // };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff9',
+    // backgroundColor: '#ff9',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Asset, Font, AppLoading } from 'expo'
 import aws_exports from './aws-exports';
 import AWSAppSyncClient from 'aws-appsync';
 import ApolloClient from 'apollo-boost'
@@ -7,6 +8,7 @@ import { AUTH_TYPE } from 'aws-appsync/lib/link/auth-link';
 import { ApolloProvider } from 'react-apollo';
 import { Rehydrated } from 'aws-appsync-react'
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import WelcomeScreen from './containers/WelcomeScreen'
 import HomeScreen from './containers/HomeScreen'
 import OtherScreen from './containers/OtherScreen'
 import AuthLoadingScreen from './containers/AuthLoadingScreen'
@@ -38,13 +40,28 @@ export const client = new AWSAppSyncClient({
 //   }
 // })
 
-const AppStack = createStackNavigator({
-  Home: HomeScreen,
-  CreateFold: CreateFold,
-  Other: OtherScreen,
-});
+const AppStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    CreateFold: CreateFold,
+    Other: OtherScreen,
+  },
+  {
+    headerStyle: {
+      backgroundColor: '#f0f',
+    },
+  }
+  );
 
-const AuthStack = createStackNavigator({ SignIn: SignInScreen });
+const AuthStack = createStackNavigator(
+  {
+    Welcome: WelcomeScreen,
+    SignIn: SignInScreen
+  },
+  {
+    headerMode: 'none',
+  }
+);
 
 const RootStack = createSwitchNavigator(
   {
@@ -60,7 +77,23 @@ const RootStack = createSwitchNavigator(
 
 
 export default class App extends React.Component {
+
+  state = {
+    isReady: false,
+  }
+
   render() {
+
+    if (!this.state.isReady) {
+      return (
+        <AppLoading
+          startAsync={this._cacheResourcesAsync}
+          onFinish={() => this.setState({ isReady: true })}
+          onError={console.warn}
+        />
+      );
+    }
+
     return (
       <ApolloProvider client={client}>
         {/*<Rehydrated>*/}
@@ -68,5 +101,16 @@ export default class App extends React.Component {
         {/*</Rehydrated>*/}
       </ApolloProvider>
     );
+  }
+
+  async _cacheResourcesAsync() {
+    await Promise.all([
+      Font.loadAsync({
+        'Lato': require('./assets/fonts/Lato-Regular.ttf')
+      }),
+      Asset.loadAsync([
+        require('./assets/images/foldLogo.png')
+      ]),
+    ]);
   }
 }

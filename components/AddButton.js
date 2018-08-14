@@ -6,6 +6,9 @@ const StyledAddButton = styled.TouchableOpacity`
   background:#f00;
   width: 56px;
   height: 56px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 `
 
 const AddButton = (props) => (

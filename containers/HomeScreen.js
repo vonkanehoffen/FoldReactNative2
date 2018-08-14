@@ -13,7 +13,7 @@ class HomeScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     return (
-      <ScrollView >
+      <ScrollView>
         <Button title="Show me more of the app" onPress={this._showMoreApp} />
         <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
         <MyFolds filter={[]}/>
