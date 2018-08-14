@@ -1,17 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { View, Button, StyleSheet, ActivityIndicator, Text } from 'react-native'
+import { View, Button, StyleSheet, ActivityIndicator } from 'react-native'
 import { Auth } from 'aws-amplify'
-import { TextField } from 'react-native-material-textfield'
 import TextFieldDark from '../components/TextFieldDark'
-import CentreContainer from '../components/CentreContainer'
-import config from '../config'
 import BigButton from '../components/BigButton'
 import Error from '../components/Error'
+import ScreenHeading from '../components/ScreenHeading'
 
-const StyledSignInScreen = styled.View`
-  width: 90%;
-`
 class SignInScreen extends React.Component {
   static navigationOptions = {
     title: 'Please sign in',
@@ -49,8 +44,9 @@ class SignInScreen extends React.Component {
     if(loading) return <ActivityIndicator />
 
     return (
-      <CentreContainer>
+      <Outer behavior="padding" enabled>
         <StyledSignInScreen>
+          <ScreenHeading>SIGN IN</ScreenHeading>
           <TextFieldDark
             label="User name"
             textContentType="username"
@@ -67,18 +63,20 @@ class SignInScreen extends React.Component {
           <BigButton title="Sign in" onPress={this.doSignIn} />
           {error && <Error>{error}</Error>}
         </StyledSignInScreen>
-      </CentreContainer>
+      </Outer>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: '#ff9',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Outer = styled.KeyboardAvoidingView`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  background: blueviolet;
+`
+
+const StyledSignInScreen = styled.View`
+  width: 90%;
+`
 
 export default SignInScreen

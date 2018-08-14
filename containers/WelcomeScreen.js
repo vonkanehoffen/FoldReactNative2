@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { View } from 'react-native'
 import CentreContainer from '../components/CentreContainer'
 import { Image } from 'react-native'
 import BigButton from '../components/BigButton'
@@ -15,8 +16,10 @@ class WelcomeScreen extends React.Component {
     const { navigation: { navigate }} = this.props
 
     return (
-      <CentreContainer>
-        <Image source={require('../assets/images/foldLogo.png')}/>
+      <Outer>
+        <Splash>
+          <Image source={require('../assets/images/foldLogo.png')}/>
+        </Splash>
         <ActionBar>
           <Action onPress={() => navigate('SignUp')}>
             <Label>SIGN UP</Label>
@@ -25,19 +28,29 @@ class WelcomeScreen extends React.Component {
             <Label>SIGN IN</Label>
           </Action>
         </ActionBar>
-      </CentreContainer>
+      </Outer>
     )
 
   }
 }
+
+const Outer = styled.View`
+  flex: 1;
+  background:#000;
+`
+
+const Splash = styled.View`
+  background: #000;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`
 
 const ActionBar = styled.View`
   background: ${config.primaryColor};
   width: 100%;
   display: flex;
   flex-direction: row;
-  position: absolute;
-  bottom: 0;
 `
 
 const Action = styled.TouchableOpacity`

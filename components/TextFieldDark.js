@@ -6,6 +6,7 @@ export default (props) => (
   <TextField
     textColor={config.primaryColor}
     baseColor={config.primaryColor}
+    tintColor={config.primaryColor}
     {...props}
   />
 )
