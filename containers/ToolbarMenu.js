@@ -12,6 +12,8 @@ import { client } from '../App'
 class ToolbarMenu extends React.Component {
 
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
       <Menu>
         <MenuTrigger>
@@ -23,7 +25,7 @@ class ToolbarMenu extends React.Component {
           />
         </MenuTrigger>
         <MenuOptions customStyles={optionsStyles}>
-          <MenuOption onSelect={() => alert(`about...`)} text='About'/>
+          <MenuOption onSelect={() => navigate('About')} text='About'/>
           <MenuOption onSelect={this.signOut} text='Sign Out'/>
         </MenuOptions>
       </Menu>

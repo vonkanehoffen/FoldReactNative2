@@ -11,7 +11,7 @@ import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native'
 import WelcomeScreen from './containers/WelcomeScreen'
 import HomeScreen from './containers/HomeScreen'
-import OtherScreen from './containers/OtherScreen'
+import AboutScreen from './containers/AboutScreen'
 import AuthLoadingScreen from './containers/AuthLoadingScreen'
 import SignInScreen from './containers/SignInScreen'
 import CreateFold from './containers/CreateFold'
@@ -49,7 +49,7 @@ const AppStack = createStackNavigator(
   {
     Home: HomeScreen,
     CreateFold: CreateFold,
-    Other: OtherScreen,
+    About: AboutScreen,
   },
   {
     initialRouteName: 'Home',
