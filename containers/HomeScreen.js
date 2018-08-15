@@ -17,7 +17,6 @@ class HomeScreen extends React.Component {
     return (
       <ScrollView>
         <Button title="Show me more of the app" onPress={this._showMoreApp}/>
-        <Button title="Actually, sign me out :)" onPress={this._signOutAsync} />
         <MyFolds filter={[]}/>
         <AddButton onPress={() => navigate('CreateFold')}/>
       </ScrollView>
@@ -26,12 +25,6 @@ class HomeScreen extends React.Component {
 
   _showMoreApp = () => {
     this.props.navigation.navigate('Other');
-  };
-
-  _signOutAsync = async () => {
-    await Auth.signOut()
-    client.resetStore()
-    this.props.navigation.navigate('Auth');
   };
 }
 

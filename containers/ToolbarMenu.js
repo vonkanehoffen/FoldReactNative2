@@ -5,6 +5,9 @@ import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-m
 import { Text } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import config from '../config'
+import { withNavigation } from 'react-navigation'
+import { Auth } from 'aws-amplify'
+import { client } from '../App'
 
 class ToolbarMenu extends React.Component {
 
@@ -21,11 +24,18 @@ class ToolbarMenu extends React.Component {
         </MenuTrigger>
         <MenuOptions customStyles={optionsStyles}>
           <MenuOption onSelect={() => alert(`about...`)} text='About'/>
-          <MenuOption onSelect={() => alert(`sign out...`)} text='Sign Out'/>
+          <MenuOption onSelect={this.signOut} text='Sign Out'/>
         </MenuOptions>
       </Menu>
     )
   }
+
+  signOut = async () => {
+    await Auth.signOut()
+    client.resetStore()
+    this.props.navigation.navigate('Auth');
+  };
+
 
 }
 
@@ -54,4 +64,4 @@ const optionsStyles = {
   },
 };
 
-export default ToolbarMenu
+export default withNavigation(ToolbarMenu)
