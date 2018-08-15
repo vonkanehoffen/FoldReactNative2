@@ -3,20 +3,7 @@ import { Button, View } from 'react-native'
 
 class OtherScreen extends React.Component {
   static navigationOptions = {
-    title: 'Welcome',
-    headerStyle: {
-      backgroundColor: '#f0f',
-    },
-    headerTitleStyle: {
-      color: 'white',
-    },
-    headerRight: (
-      <Button
-        onPress={() => alert('This is a button!')}
-        title="Info"
-        color="#fff"
-      />
-    ),
+    title: 'About',
   };
   render() {
     const { navigate } = this.props.navigation;

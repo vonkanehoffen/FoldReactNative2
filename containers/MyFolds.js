@@ -35,7 +35,7 @@ class MyFolds extends Component {
 
           return (
             <View>
-              <Button onPress={() => refetch()} title="Refetch!"/>
+              {/*<Button onPress={() => refetch()} title="Refetch!"/>*/}
               {data.listMyFolds.items
                 .filter(fold => {
                   if(filter.length < 1) return true

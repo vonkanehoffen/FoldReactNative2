@@ -6,14 +6,19 @@ import ApolloClient from 'apollo-boost'
 import Amplify, { Auth } from 'aws-amplify';
 import { AUTH_TYPE } from 'aws-appsync/lib/link/auth-link';
 import { ApolloProvider } from 'react-apollo';
-import { Rehydrated } from 'aws-appsync-react'
+import { Rehydrated } from 'aws-appsync-react';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import { StatusBar } from 'react-native'
 import WelcomeScreen from './containers/WelcomeScreen'
 import HomeScreen from './containers/HomeScreen'
 import OtherScreen from './containers/OtherScreen'
 import AuthLoadingScreen from './containers/AuthLoadingScreen'
 import SignInScreen from './containers/SignInScreen'
 import CreateFold from './containers/CreateFold'
+import config from './config'
+import { View } from 'react-native'
+import { MenuProvider } from 'react-native-popup-menu'
+import ToolbarMenu from './containers/ToolbarMenu'
 
 Amplify.configure(aws_exports);
 
@@ -47,8 +52,18 @@ const AppStack = createStackNavigator(
     Other: OtherScreen,
   },
   {
-    headerStyle: {
-      backgroundColor: '#f0f',
+    initialRouteName: 'Home',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: config.primaryColor,
+      },
+      headerRight: (
+        <ToolbarMenu/>
+      )
+      // headerTintColor: '#fff',
+      // headerTitleStyle: {
+      //   fontWeight: 'bold',
+      // },
     },
   }
   );
@@ -74,12 +89,22 @@ const RootStack = createSwitchNavigator(
   }
 );
 
+// TODO: Not currently needed.... menu context as part of react-native-popup-menu
+export const AppContext = React.createContext({
+  // According to https://reactjs.org/docs/context.html this initial state should indeed be duplicated here.
+  toolbarMenuOpen: false, // Drop-down toolbar menu
+  toggleToolbarMenu: () => {},
+})
 
 
 export default class App extends React.Component {
 
+  toggleToolbarMenu = () => this.setState({ toolbarMenuOpen: !this.state.toolbarMenuOpen })
+
   state = {
     isReady: false,
+    toolbarMenuOpen: false,
+    toggleToolbarMenu: this.toggleToolbarMenu
   }
 
   render() {
@@ -95,11 +120,19 @@ export default class App extends React.Component {
     }
 
     return (
-      <ApolloProvider client={client}>
-        {/*<Rehydrated>*/}
-          <RootStack/>
-        {/*</Rehydrated>*/}
-      </ApolloProvider>
+      <MenuProvider>
+        {/*<AppContext.Provider value={this.state}>*/}
+          <ApolloProvider client={client}>
+            {/*<Rehydrated>*/}
+              <StatusBar // TODO: Status bar config doesn't work here or in app.json.
+                backgroundColor="blue"
+                barStyle="dark-content"
+              />
+              <RootStack/>
+            {/*</Rehydrated>*/}
+          </ApolloProvider>
+        {/*</AppContext.Provider>*/}
+      </MenuProvider>
     );
   }
 
