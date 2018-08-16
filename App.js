@@ -15,7 +15,7 @@ import AboutScreen from './containers/AboutScreen'
 import AuthLoadingScreen from './containers/AuthLoadingScreen'
 import SignInScreen from './containers/SignInScreen'
 import CreateFold from './containers/CreateFold'
-import config from './config'
+import { colors } from './config'
 import { View } from 'react-native'
 import { MenuProvider } from 'react-native-popup-menu'
 import ToolbarMenu from './containers/ToolbarMenu'
@@ -55,7 +55,7 @@ const AppStack = createStackNavigator(
     initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
-        backgroundColor: config.primaryColor,
+        backgroundColor: colors.primary,
       },
       headerRight: (
         <ToolbarMenu/>

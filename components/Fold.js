@@ -2,27 +2,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { View, Text } from 'react-native'
+import { colors } from '../config'
+import CardTag from './CardTag'
 // import DeleteFold from '../containers/DeleteFold'
 
-// const Tag = styled.View`
-//   display: inline-block;
-//   margin: .5rem;
-//   padding: .5rem;
-//   background: darkcyan;
-//   color: white;
-//   font-weight: bold;
-//   font-size: .8rem;
-// `
 const Fold = ({ fold }) => {
   return (
-    <View style={fold.id < 0 ? {backgroundColor: 'palegreen'} :{}}>
-      <Text>{fold.title}</Text>
-      <Text>{fold.content}</Text>
-      {/*{fold.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}*/}
+    <Outer style={fold.id < 0 ? {backgroundColor: 'palegreen'} :{}}>
+      <Title>{fold.title}</Title>
+      <Content>{fold.content}</Content>
+      <Tags>
+        {fold.tags.map(tag => <CardTag key={tag}>{tag}</CardTag>)}
+      </Tags>
       {/*<DeleteFold id={fold.id}/>*/}
-    </View>
+    </Outer>
   )
 }
+
+const Outer = styled.View`
+  background: ${colors.cardBg1};
+  margin-top: 10px;
+`
+
+const Title = styled.Text`
+  color: #fff;
+  font-size: 20px;
+  margin: 5px 10px;
+`
+
+const Content = styled.Text`
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+`
+
+const Tags = styled.View`
+  flex: 1;
+  flex-direction: row;
+  margin: 5px; 
+`
 
 Fold.propTypes = {
   fold: PropTypes.object.isRequired,

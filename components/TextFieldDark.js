@@ -1,12 +1,12 @@
 import React from 'react'
 import { TextField } from 'react-native-material-textfield'
-import config from '../config'
+import { colors } from '../config'
 
 export default (props) => (
   <TextField
-    textColor={config.primaryColor}
-    baseColor={config.primaryColor}
-    tintColor={config.primaryColor}
+    textColor={colors.primary}
+    baseColor={colors.primary}
+    tintColor={colors.primary}
     {...props}
   />
 )

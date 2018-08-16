@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
+import styled from 'styled-components'
 import listMyFoldsQuery from '../queries/listMyFolds'
-import { ActivityIndicator, Button, View } from 'react-native'
+import { ActivityIndicator, Button, ScrollView } from 'react-native'
 import Error from '../components/Error'
 import Fold from '../components/Fold'
 
@@ -34,7 +35,7 @@ class MyFolds extends Component {
           }
 
           return (
-            <View>
+            <Outer>
               {/*<Button onPress={() => refetch()} title="Refetch!"/>*/}
               {data.listMyFolds.items
                 .filter(fold => {
@@ -44,14 +45,17 @@ class MyFolds extends Component {
                   }
                 })
                 .map((fold, i) => <Fold fold={fold} key={i}/>)}
-            </View>
+            </Outer>
           )
         }}
       </Query>
     )
   }
-
 }
 
+const Outer = styled.ScrollView`
+  background: black;
+  height: 100%;
+`
 
 export default MyFolds

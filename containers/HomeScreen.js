@@ -14,10 +14,10 @@ class HomeScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     return (
-      <ScrollView>
+      <View>
         <MyFolds filter={[]}/>
         <AddButton onPress={() => navigate('CreateFold')}/>
-      </ScrollView>
+      </View>
     );
   }
 

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-menu"
 import { Text } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
-import config from '../config'
+import { colors } from '../config'
 import { withNavigation } from 'react-navigation'
 import { Auth } from 'aws-amplify'
 import { client } from '../App'
@@ -47,7 +47,7 @@ class ToolbarMenu extends React.Component {
 
 const optionsStyles = {
   optionsContainer: {
-    backgroundColor: config.primaryColor,
+    backgroundColor: colors.primary,
     padding: 5,
   },
   optionsWrapper: {

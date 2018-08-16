@@ -5,7 +5,7 @@ import { View } from 'react-native'
 import CentreContainer from '../components/CentreContainer'
 import { Image } from 'react-native'
 import BigButton from '../components/BigButton'
-import config from '../config'
+import { colors } from '../config'
 
 class WelcomeScreen extends React.Component {
 
@@ -47,7 +47,7 @@ const Splash = styled.View`
 `
 
 const ActionBar = styled.View`
-  background: ${config.primaryColor};
+  background: ${colors.primary};
   width: 100%;
   display: flex;
   flex-direction: row;

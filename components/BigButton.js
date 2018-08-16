@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import config from '../config'
+import { colors } from '../config'
 
 const Outer = styled.TouchableOpacity`
-  background: ${config.primaryColor};
+  background: ${colors.primary};
   padding: 15px;
   border-radius: 3px;  
 `

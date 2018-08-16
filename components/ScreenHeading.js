@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import config from '../config'
+import { colors } from '../config'
 
 const ScreenHeading = styled.Text`
-  color: ${config.primaryColor};
+  color: ${colors.primary};
   font-size: 24px;
   letter-spacing: 2px;
 `
