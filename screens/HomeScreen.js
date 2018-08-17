@@ -5,17 +5,18 @@ import { client } from '../App'
 import MyFolds from '../containers/MyFolds'
 import AddButton from '../components/AddButton'
 import styled from 'styled-components'
+import HeaderSearch from '../containers/HeaderSearch'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Home',
+    headerTitle: <HeaderSearch/>
   };
 
   render() {
     const { navigate } = this.props.navigation
     return (
       <View>
-        <MyFolds filter={[]}/>
+        <MyFolds/>
         <AddButton onPress={() => navigate('CreateFold')}/>
       </View>
     );

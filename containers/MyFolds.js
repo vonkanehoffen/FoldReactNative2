@@ -6,49 +6,51 @@ import listMyFoldsQuery from '../queries/listMyFolds'
 import { ActivityIndicator, Button, ScrollView } from 'react-native'
 import Error from '../components/Error'
 import Fold from '../components/Fold'
+import { AppContext } from '../App'
 
 class MyFolds extends Component {
 
   static defaultProps = {}
-  static propTypes = {
-    filter: PropTypes.array,
-  }
-  state = {}
 
   render() {
-    const { filter } = this.props
-
     return (
-      <Query query={listMyFoldsQuery}>
-        {({ data, loading, error, refetch}) => {
-          if(loading) return <ActivityIndicator/>
-          if(error) {
-            return (
-              <View>
-                <Button onPress={() => {
-                  console.log("refetching...")
-                  refetch()
-                }} title="Refetch!"/>
-                <Error>{JSON.stringify(error, null, 2)}</Error>
-              </View>
-            )
-          }
+      <AppContext.Consumer>
+        {app => (
+          <Query query={listMyFoldsQuery}>
+            {({ data, loading, error, refetch}) => {
+              if(loading) return <ActivityIndicator/>
+              if(error) {
+                return (
+                  <View>
+                    <Button onPress={() => {
+                      console.log("refetching...")
+                      refetch()
+                    }} title="Refetch!"/>
+                    <Error>{JSON.stringify(error, null, 2)}</Error>
+                  </View>
+                )
+              }
 
-          return (
-            <Outer>
-              {/*<Button onPress={() => refetch()} title="Refetch!"/>*/}
-              {data.listMyFolds.items
-                .filter(fold => {
-                  if(filter.length < 1) return true
-                  for(let term of filter) {
-                    if(fold.tags.includes(term)) return true
-                  }
-                })
-                .map((fold, i) => <Fold fold={fold} key={i}/>)}
-            </Outer>
-          )
-        }}
-      </Query>
+              return (
+                <Outer>
+                  {/*<Button onPress={() => refetch()} title="Refetch!"/>*/}
+                  {data.listMyFolds.items
+                    .filter(fold => {
+                      if(app.searchTerm.length < 1) return true
+                      // TODO: array.
+                      // for(let term of app.searchTerm) {
+                      //   if(fold.tags.includes(term)) return true
+                      // }
+                      // ....also use this:
+                      if(fold.title.includes(app.searchTerm)) return true
+                    })
+                    .map((fold, i) => <Fold fold={fold} key={i}/>)}
+                </Outer>
+              )
+            }}
+          </Query>
+        )}
+      </AppContext.Consumer>
     )
   }
 }

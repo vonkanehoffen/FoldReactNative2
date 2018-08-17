@@ -92,19 +92,19 @@ const RootStack = createSwitchNavigator(
 // TODO: Not currently needed.... menu context as part of react-native-popup-menu
 export const AppContext = React.createContext({
   // According to https://reactjs.org/docs/context.html this initial state should indeed be duplicated here.
-  toolbarMenuOpen: false, // Drop-down toolbar menu
-  toggleToolbarMenu: () => {},
+  searchTerm: '',
+  setSearchTerm: () => {},
 })
 
 
 export default class App extends React.Component {
 
-  toggleToolbarMenu = () => this.setState({ toolbarMenuOpen: !this.state.toolbarMenuOpen })
+  setSearchTerm = (searchTerm) => this.setState({ searchTerm })
 
   state = {
     isReady: false,
-    toolbarMenuOpen: false,
-    toggleToolbarMenu: this.toggleToolbarMenu
+    searchTerm: '',
+    setSearchTerm: this.setSearchTerm
   }
 
   render() {
@@ -121,7 +121,7 @@ export default class App extends React.Component {
 
     return (
       <MenuProvider>
-        {/*<AppContext.Provider value={this.state}>*/}
+        <AppContext.Provider value={this.state}>
           <ApolloProvider client={client}>
             {/*<Rehydrated>*/}
               <StatusBar // TODO: Status bar config doesn't work here or in app.json.
@@ -131,7 +131,7 @@ export default class App extends React.Component {
               <RootStack/>
             {/*</Rehydrated>*/}
           </ApolloProvider>
-        {/*</AppContext.Provider>*/}
+        </AppContext.Provider>
       </MenuProvider>
     );
   }
