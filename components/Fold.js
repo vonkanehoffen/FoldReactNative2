@@ -5,10 +5,11 @@ import { View, Text } from 'react-native'
 import { colors } from '../config'
 import CardTag from './CardTag'
 // import DeleteFold from '../containers/DeleteFold'
+import { colorFromString } from '../helpers/color'
 
 const Fold = ({ fold }) => {
   return (
-    <Outer style={fold.id < 0 ? {backgroundColor: 'palegreen'} :{}}>
+    <Outer loading={fold.id < 0} color={colorFromString(fold.tags[0])}>
       <Title>{fold.title}</Title>
       <Content>{fold.content}</Content>
       <Tags>
@@ -20,7 +21,7 @@ const Fold = ({ fold }) => {
 }
 
 const Outer = styled.View`
-  background: ${colors.cardBg1};
+  background: ${props => props.loading ? 'palegreen' : props.color};
   margin-top: 10px;
 `
 
