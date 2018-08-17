@@ -9,11 +9,11 @@ import { ApolloProvider } from 'react-apollo';
 import { Rehydrated } from 'aws-appsync-react';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import { StatusBar } from 'react-native'
-import WelcomeScreen from './containers/WelcomeScreen'
-import HomeScreen from './containers/HomeScreen'
-import AboutScreen from './containers/AboutScreen'
-import AuthLoadingScreen from './containers/AuthLoadingScreen'
-import SignInScreen from './containers/SignInScreen'
+import WelcomeScreen from './screens/WelcomeScreen'
+import HomeScreen from './screens/HomeScreen'
+import AboutScreen from './screens/AboutScreen'
+import AuthLoadingScreen from './screens/AuthLoadingScreen'
+import SignInScreen from './screens/SignInScreen'
 import CreateFold from './containers/CreateFold'
 import { colors } from './config'
 import { View } from 'react-native'

@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, View, ScrollView, Button, AsyncStorage, StyleSheet } from 'react-native'
 import { Auth } from 'aws-amplify'
 import { client } from '../App'
-import MyFolds from './MyFolds'
+import MyFolds from '../containers/MyFolds'
 import AddButton from '../components/AddButton'
 import styled from 'styled-components'
 
