@@ -38,6 +38,8 @@ class SignInScreen extends React.Component {
     }
   }
 
+  // TODO: Auto input focus: https://stackoverflow.com/questions/32748718/react-native-how-to-select-the-next-textinput-after-pressing-the-next-keyboar
+
   render() {
     const { loading, user, error, username, password } = this.state
 

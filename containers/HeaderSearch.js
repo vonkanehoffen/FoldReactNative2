@@ -13,7 +13,7 @@ class HeaderSearch extends Component {
   render() {
     return (
       <AppContext.Consumer>
-        {app => (
+        {app =>
           <Outer>
             <MaterialIcons
               name="search"
@@ -35,7 +35,7 @@ class HeaderSearch extends Component {
               ref={input => this.termInput = input}
             />
           </Outer>
-        )}
+        }
       </AppContext.Consumer>
     )
   }

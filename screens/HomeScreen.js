@@ -6,6 +6,7 @@ import MyFolds from '../containers/MyFolds'
 import AddButton from '../components/AddButton'
 import styled from 'styled-components'
 import HeaderSearch from '../containers/HeaderSearch'
+import TagSelect from '../containers/TagSelect'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -16,6 +17,7 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View>
+        <TagSelect/>
         <MyFolds/>
         <AddButton onPress={() => navigate('CreateFold')}/>
       </View>

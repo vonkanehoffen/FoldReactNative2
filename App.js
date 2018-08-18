@@ -47,7 +47,7 @@ export const client = new AWSAppSyncClient({
 
 const AppStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: HomeScreen, // TODO: Just pas props to this for search? Context = bad?
     CreateFold: CreateFold,
     About: AboutScreen,
   },
@@ -93,18 +93,23 @@ const RootStack = createSwitchNavigator(
 export const AppContext = React.createContext({
   // According to https://reactjs.org/docs/context.html this initial state should indeed be duplicated here.
   searchTerm: '',
+  searchTags: [],
   setSearchTerm: () => {},
+  setSearchTags: () => {},
 })
 
 
 export default class App extends React.Component {
 
   setSearchTerm = (searchTerm) => this.setState({ searchTerm })
+  setSearchTags = (searchTags) => this.setState({ searchTags })
 
   state = {
     isReady: false,
     searchTerm: '',
-    setSearchTerm: this.setSearchTerm
+    searchTags: [],
+    setSearchTerm: this.setSearchTerm,
+    setSearchTags: this.setSearchTags,
   }
 
   render() {
