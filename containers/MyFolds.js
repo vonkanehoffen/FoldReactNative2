@@ -6,6 +6,7 @@ import listMyFoldsQuery from '../queries/listMyFolds'
 import { ActivityIndicator, Button, ScrollView } from 'react-native'
 import Error from '../components/Error'
 import Fold from '../components/Fold'
+import FullScreenLoading from '../components/FullScreenLoading'
 import { AppContext } from '../App'
 
 class MyFolds extends Component {
@@ -18,7 +19,9 @@ class MyFolds extends Component {
         {app => (
           <Query query={listMyFoldsQuery}>
             {({ data, loading, error, refetch}) => {
-              if(loading) return <ActivityIndicator/>
+
+              if(loading) return <FullScreenLoading/>
+
               if(error) {
                 return (
                   <View>

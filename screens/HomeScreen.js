@@ -27,7 +27,9 @@ class HomeScreen extends React.Component {
 }
 
 const Outer = styled.View`
+  height: 100%;
   max-height: 100%;
+  background: black;
 `
 
 export default HomeScreen

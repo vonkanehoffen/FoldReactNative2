@@ -2,11 +2,11 @@ import React from 'react';
 import {
   ActivityIndicator,
   AsyncStorage,
-  StatusBar,
   StyleSheet,
   View,
 } from 'react-native';
 import { Auth } from 'aws-amplify'
+import FullScreenLoading from '../components/FullScreenLoading'
 
 class AuthLoadingScreen extends React.Component {
 
@@ -21,24 +21,11 @@ class AuthLoadingScreen extends React.Component {
     }
   }
 
-  // Render any loading content that you like here
   render() {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator />
-        <StatusBar barStyle="default" />
-      </View>
+      <FullScreenLoading/>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ff9',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default AuthLoadingScreen
