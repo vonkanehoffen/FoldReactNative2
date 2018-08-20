@@ -46,6 +46,10 @@ class TagSelect extends Component {
             ])
           }
 
+          // TODO: Either get box-shadow working or add https://github.com/react-native-community/react-native-linear-gradient
+          // This doesn't work:
+          // <View key={3} style={{backgroundColor: '#f00', height: 20, shadowColor: '#0f0', shadowOffset: { width:10, height: 10 }, shadowOpacity: 0.8, shadowRadius: 10}}/>
+
           return (
             <Query query={listMyTagsQuery}>
               {({ loading, error, data: { listMyTags } }) => {
@@ -71,7 +75,7 @@ class TagSelect extends Component {
                         <TagText>{item.slug}</TagText>
                       </Tag>
                     )}
-                  </Outer>
+                  </Outer>,
                 ])
               }}
             </Query>
