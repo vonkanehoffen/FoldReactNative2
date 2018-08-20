@@ -6,24 +6,44 @@ import { colors } from '../config'
 import { Query } from 'react-apollo'
 import listMyTagsQuery from '../queries/listMyTags'
 import { AppContext } from '../App'
+import { MaterialIcons } from '@expo/vector-icons'
 
 class TagSelect extends Component {
+
+  // TODO: Context may be too many redraws. Happens every time any context is changed. Redux or props?
+  // or  even https://www.apollographql.com/docs/react/essentials/local-state.html
+  // ...that looks complex.
+  // ... actually maybe redraws aren't too badly optimised.
+
+  // state = {
+  //   selected: [],
+  // }
+
+  // addSelect = (tag) => this.setState({
+  //   selected: [ ...this.state.selected, tag]
+  // })
+  //
+  // removeSelect = (tag) => this.setState({
+  //   selected: [ ...this.state.selected.filter(s => s!== tag) ]
+  // })
 
   render() {
     return (
       <AppContext.Consumer>
         {app => {
 
-          console.log('searh tags:', app)
           const addSearchTag = (tag) => {
             app.setSearchTags([
               ...app.searchTags,
               tag
             ])
+            app.setSearchTerm('')
           }
 
           const removeSearchTag = (tag) => {
-            
+            app.setSearchTags([
+              ...app.searchTags.filter(s => s!== tag)
+            ])
           }
 
           return (
@@ -33,21 +53,26 @@ class TagSelect extends Component {
                 if (loading) return <Text>Loading...</Text>;
                 if (error) return <Text>Error :(</Text>;
 
-                return (
-                  <Outer horizontal={true}>
-                    {/*<Text style={{color: 'white'}}>{JSON.stringify(app.searchTags, null, 2)}</Text>*/}
+                return ([
+                  <Outer horizontal={true} key={1}>
                     {app.searchTags.map((tag, i) =>
-                      <Tag activeOpacity={0.8} key={i} onPress={removeSearchTag} active>
-                        <TagText active>{tag}</TagText>
+                      <Tag activeOpacity={0.8} key={i} onPress={() => removeSearchTag(tag)} active>
+                        <TagText active>{tag}
+                        </TagText>
+                        <MaterialIcons name="close" size={22} color="black"/>
                       </Tag>
                     )}
-                    {listMyTags.items.map((item, i) =>
+                  </Outer>,
+                  <Outer horizontal={true} key={2}>
+                    {listMyTags.items
+                      .filter(item => item.slug.toLowerCase().includes(app.searchTerm.toLowerCase()))
+                      .map((item, i) =>
                       <Tag activeOpacity={0.8} key={i} onPress={() => addSearchTag(item.slug)}>
                         <TagText>{item.slug}</TagText>
                       </Tag>
                     )}
                   </Outer>
-                )
+                ])
               }}
             </Query>
           )
@@ -69,11 +94,12 @@ const Tag = styled.TouchableOpacity`
   border-radius: 5px;
   height: 45px;
   background: ${props => props.active ? colors.primary : 'black'};
+  flex-direction: row;
+  align-items: center;
 `
 
 const TagText = styled.Text`
   color: ${props => props.active ? 'black' : colors.primary};
 `
-
 
 export default TagSelect 

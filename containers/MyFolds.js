@@ -23,7 +23,6 @@ class MyFolds extends Component {
                 return (
                   <View>
                     <Button onPress={() => {
-                      console.log("refetching...")
                       refetch()
                     }} title="Refetch!"/>
                     <Error>{JSON.stringify(error, null, 2)}</Error>
@@ -36,13 +35,17 @@ class MyFolds extends Component {
                   {/*<Button onPress={() => refetch()} title="Refetch!"/>*/}
                   {data.listMyFolds.items
                     .filter(fold => {
-                      if(app.searchTerm.length < 1) return true
-                      // TODO: array.
-                      // for(let term of app.searchTerm) {
-                      //   if(fold.tags.includes(term)) return true
-                      // }
-                      // ....also use this:
-                      if(fold.title.includes(app.searchTerm)) return true
+                      if(app.searchTerm.length < 1 && app.searchTags.length < 1) return true
+
+                      for(let tag of app.searchTags) {
+                        if(fold.tags.includes(tag)) {
+                          return true
+                        }
+                      }
+
+                      if(app.searchTerm.length > 1 && fold.title.toLowerCase().includes(app.searchTerm.toLowerCase())) {
+                        return true
+                      }
                     })
                     .map((fold, i) => <Fold fold={fold} key={i}/>)}
                 </Outer>
