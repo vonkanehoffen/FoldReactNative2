@@ -19,7 +19,10 @@ const StyledAddButton = styled.TouchableOpacity`
   border-radius: 28px;
   align-items: center;
   justify-content: center;
+  elevation: 8;
 `
+// Note: Shadow props may be needed for iOS? https://stackoverflow.com/questions/41320131/how-to-set-shadows-in-react-native-for-android
+// elevation is android only
 
 
 export default AddButton
