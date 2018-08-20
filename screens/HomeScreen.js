@@ -16,15 +16,18 @@ class HomeScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     return (
-      <View>
+      <Outer>
         <TagSelect/>
         <MyFolds/>
         <AddButton onPress={() => navigate('CreateFold')}/>
-      </View>
+      </Outer>
     );
   }
 
 }
 
+const Outer = styled.View`
+  max-height: 100%;
+`
 
 export default HomeScreen
