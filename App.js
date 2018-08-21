@@ -19,6 +19,7 @@ import { colors } from './config'
 import { View } from 'react-native'
 import { MenuProvider } from 'react-native-popup-menu'
 import ToolbarMenu from './containers/ToolbarMenu'
+import TestScreen from './screens/TestScreen'
 
 Amplify.configure(aws_exports);
 
@@ -50,6 +51,7 @@ const AppStack = createStackNavigator(
     Home: HomeScreen, // TODO: Just pas props to this for search? Context = bad?
     CreateFold: CreateFoldScreen,
     About: AboutScreen,
+    Test: TestScreen,
   },
   {
     initialRouteName: 'Home',

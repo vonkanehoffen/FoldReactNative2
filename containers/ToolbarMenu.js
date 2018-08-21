@@ -26,6 +26,7 @@ class ToolbarMenu extends React.Component {
         </MenuTrigger>
         <MenuOptions customStyles={optionsStyles}>
           <MenuOption onSelect={() => navigate('About')} text='About'/>
+          <MenuOption onSelect={() => navigate('Test')} text='Test'/>
           <MenuOption onSelect={this.signOut} text='Sign Out'/>
         </MenuOptions>
       </Menu>

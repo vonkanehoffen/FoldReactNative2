@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { View, Button, AsyncStorage, StyleSheet, ActivityIndicator, TextInput, Text, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { View, Button, AsyncStorage, StyleSheet, ActivityIndicator, TextInput, Text, ScrollView, KeyboardAvoidingView, Animated, Keyboard } from 'react-native'
 import { TextField } from 'react-native-material-textfield';
 import styled from 'styled-components'
 // import TagSelect from '../containers/TagSelect'
@@ -12,6 +12,8 @@ import TextFieldLight from '../components/TextFieldLight'
 import BigButton from '../components/BigButton'
 import TagView from '../components/TagView'
 import CreateTagSelect from '../containers/CreateTagSelect'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 
 class CreateFoldScreen extends Component {
 
@@ -65,17 +67,11 @@ class CreateFoldScreen extends Component {
           if(response.loading) return <ActivityIndicator/>
           if(response.error) return <View>Error: {JSON.stringify(response.error, null, 2)}</View>
           return (
-            <KeyboardAvoidingView style={{ backgroundColor: 'blue'}} behavior="padding" enabled>
-              <ScrollView style={{ backgroundColor: 'green'}}>
+              <Outer>
                 <TextFieldLight
                   label="Title"
                   value={this.state.title}
                   onChangeText={title => this.setState({title})}
-                />
-                <TextFieldLight
-                  label="URI"
-                  value={this.state.uri}
-                  onChangeText={uri => this.setState({uri})}
                 />
                 <TextFieldLight
                   label="Content"
@@ -83,10 +79,14 @@ class CreateFoldScreen extends Component {
                   onChangeText={content => this.setState({content})}
                 />
                 <CreateTagSelect selectedTags={this.state.tags} setTags={this.setTags}/>
+                <TextFieldLight
+                  label="URI"
+                  value={this.state.uri}
+                  onChangeText={uri => this.setState({uri})}
+                />
                 <BigButton title="Save" onPress={()=> createFold()} dark/>
-                <Text>{JSON.stringify(this.state.tags, null, 2)}</Text>
-              </ScrollView>
-            </KeyboardAvoidingView>
+                <View style={{height: 80}}/>
+              </Outer>
           )
         }}
       </Mutation>
@@ -95,8 +95,9 @@ class CreateFoldScreen extends Component {
 
 }
 
-const Outer = styled.KeyboardAvoidingView`
+const Outer = styled.View`
   background: ${colors.primary};
+  flex: 1;
 `
 
 export default CreateFoldScreen
