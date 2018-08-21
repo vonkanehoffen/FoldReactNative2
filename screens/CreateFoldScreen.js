@@ -21,8 +21,7 @@ class CreateFoldScreen extends Component {
     title: 'New',
   }
 
-  static propTypes = {
-  }
+  static propTypes = {}
   state = {
     title: '',
     uri: '',
@@ -30,13 +29,25 @@ class CreateFoldScreen extends Component {
     tags: [],
   }
 
-  setTags = (tags) => this.setState({tags})
+  setTags = (tags) => this.setState({ tags })
 
   render() {
 
     const { title, uri, content, tags } = this.state
 
+    // TODO: Make a better keyboard avoidance thing... Tag select is rubbish.
+    // https://medium.freecodecamp.org/how-to-make-your-react-native-app-respond-gracefully-when-the-keyboard-pops-up-7442c1535580
+
     return (
+      <KeyboardAvoidingView
+        keyboardVerticalOffset={90}
+        behavior="padding"
+        style={{
+          // flex: 1,
+          backgroundColor: colors.primary,
+        }}
+        ref={ref => this.keyboardAvoider = ref}
+      >
       <Mutation
         mutation={createFoldQuery}
         variables={this.state}
@@ -66,8 +77,9 @@ class CreateFoldScreen extends Component {
         {(createFold, response) => {
           if(response.loading) return <ActivityIndicator/>
           if(response.error) return <View>Error: {JSON.stringify(response.error, null, 2)}</View>
+
           return (
-              <Outer>
+              <ScrollView>
                 <TextFieldLight
                   label="Title"
                   value={this.state.title}
@@ -85,19 +97,19 @@ class CreateFoldScreen extends Component {
                   onChangeText={uri => this.setState({uri})}
                 />
                 <BigButton title="Save" onPress={()=> createFold()} dark/>
-                <View style={{height: 80}}/>
-              </Outer>
+                <View style={{height: 800}}/>
+              </ScrollView>
           )
         }}
       </Mutation>
+      </KeyboardAvoidingView>
     )
   }
 
 }
 
-const Outer = styled.View`
-  background: ${colors.primary};
-  flex: 1;
-`
+// const Outer = styled.ScrollView`
+//   padding: 10px;
+// `
 
 export default CreateFoldScreen
