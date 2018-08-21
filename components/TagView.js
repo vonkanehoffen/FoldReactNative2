@@ -7,7 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 
 const TagView = ({selectedTags, availableTags, filterString, addTag, removeTag, lightBg}) =>
   <View>
-    <Outer horizontal={true} key={1} lightBg={lightBg}>
+    <Outer horizontal={true} key={1} lightBg={lightBg} showsHorizontalScrollIndicator={false}>
       {selectedTags.map((tag, i) =>
         <Tag activeOpacity={0.8} key={i} onPress={() => removeTag(tag)} active>
           <TagText active>{tag}
@@ -16,7 +16,7 @@ const TagView = ({selectedTags, availableTags, filterString, addTag, removeTag, 
         </Tag>
       )}
     </Outer>
-    <Outer horizontal={true} key={2} lightBg={lightBg}>
+    <Outer horizontal={true} key={2} lightBg={lightBg} showsHorizontalScrollIndicator={false}>
       {availableTags
         .filter(item => item.slug.toLowerCase().includes(filterString.toLowerCase()))
         .map((item, i) =>
