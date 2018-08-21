@@ -14,7 +14,7 @@ import HomeScreen from './screens/HomeScreen'
 import AboutScreen from './screens/AboutScreen'
 import AuthLoadingScreen from './screens/AuthLoadingScreen'
 import SignInScreen from './screens/SignInScreen'
-import CreateFold from './containers/CreateFold'
+import CreateFoldScreen from './screens/CreateFoldScreen'
 import { colors } from './config'
 import { View } from 'react-native'
 import { MenuProvider } from 'react-native-popup-menu'
@@ -48,7 +48,7 @@ export const client = new AWSAppSyncClient({
 const AppStack = createStackNavigator(
   {
     Home: HomeScreen, // TODO: Just pas props to this for search? Context = bad?
-    CreateFold: CreateFold,
+    CreateFold: CreateFoldScreen,
     About: AboutScreen,
   },
   {

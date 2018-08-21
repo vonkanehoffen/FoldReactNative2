@@ -1,13 +1,23 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { View, Button, AsyncStorage, StyleSheet, ActivityIndicator, TextInput, Text } from 'react-native'
+import { View, Button, AsyncStorage, StyleSheet, ActivityIndicator, TextInput, Text, ScrollView, KeyboardAvoidingView } from 'react-native'
 import { TextField } from 'react-native-material-textfield';
+import styled from 'styled-components'
 // import TagSelect from '../containers/TagSelect'
 import { Mutation } from 'react-apollo'
 import listMyFoldsQuery from '../queries/listMyFolds'
 import createFoldQuery from '../queries/createFold'
+import { colors } from '../config'
+import TextFieldLight from '../components/TextFieldLight'
+import BigButton from '../components/BigButton'
+import TagView from '../components/TagView'
+import CreateTagSelect from '../containers/CreateTagSelect'
 
-class CreateFold extends Component {
+class CreateFoldScreen extends Component {
+
+  static navigationOptions = {
+    title: 'New',
+  }
 
   static propTypes = {
   }
@@ -55,27 +65,28 @@ class CreateFold extends Component {
           if(response.loading) return <ActivityIndicator/>
           if(response.error) return <View>Error: {JSON.stringify(response.error, null, 2)}</View>
           return (
-            <View>
-              <Text>Create Fold</Text>
-              <TextField
-                label="Title"
-                value={this.state.title}
-                onChangeText={title => this.setState({title})}
-              />
-              <TextField
-                label="URI"
-                value={this.state.uri}
-                onChangeText={uri => this.setState({uri})}
-              />
-              <TextField
-                label="Content"
-                value={this.state.content}
-                onChangeText={content => this.setState({content})}
-              />
-              {/*<TagSelect selectedTags={this.state.tags} setTags={this.setTags}/>*/}
-              <Button title="Save" onPress={()=> createFold()}/>
-              <Text>{JSON.stringify(this.state, null, 2)}</Text>
-            </View>
+            <KeyboardAvoidingView style={{ backgroundColor: 'blue'}} behavior="padding" enabled>
+              <ScrollView style={{ backgroundColor: 'green'}}>
+                <TextFieldLight
+                  label="Title"
+                  value={this.state.title}
+                  onChangeText={title => this.setState({title})}
+                />
+                <TextFieldLight
+                  label="URI"
+                  value={this.state.uri}
+                  onChangeText={uri => this.setState({uri})}
+                />
+                <TextFieldLight
+                  label="Content"
+                  value={this.state.content}
+                  onChangeText={content => this.setState({content})}
+                />
+                <CreateTagSelect selectedTags={this.state.tags} setTags={this.setTags}/>
+                <BigButton title="Save" onPress={()=> createFold()} dark/>
+                <Text>{JSON.stringify(this.state.tags, null, 2)}</Text>
+              </ScrollView>
+            </KeyboardAvoidingView>
           )
         }}
       </Mutation>
@@ -84,4 +95,8 @@ class CreateFold extends Component {
 
 }
 
-export default CreateFold
+const Outer = styled.KeyboardAvoidingView`
+  background: ${colors.primary};
+`
+
+export default CreateFoldScreen

@@ -6,7 +6,7 @@ import { colors } from '../config'
 import { Query } from 'react-apollo'
 import listMyTagsQuery from '../queries/listMyTags'
 import { AppContext } from '../App'
-import { MaterialIcons } from '@expo/vector-icons'
+import TagView from '../components/TagView'
 
 class TagSelect extends Component {
 
@@ -57,26 +57,15 @@ class TagSelect extends Component {
                 if (loading) return <Text>Loading...</Text>;
                 if (error) return <Text>Error :(</Text>;
 
-                return ([
-                  <Outer horizontal={true} key={1}>
-                    {app.searchTags.map((tag, i) =>
-                      <Tag activeOpacity={0.8} key={i} onPress={() => removeSearchTag(tag)} active>
-                        <TagText active>{tag}
-                        </TagText>
-                        <MaterialIcons name="close" size={22} color="black"/>
-                      </Tag>
-                    )}
-                  </Outer>,
-                  <Outer horizontal={true} key={2}>
-                    {listMyTags.items
-                      .filter(item => item.slug.toLowerCase().includes(app.searchTerm.toLowerCase()))
-                      .map((item, i) =>
-                      <Tag activeOpacity={0.8} key={i} onPress={() => addSearchTag(item.slug)}>
-                        <TagText>{item.slug}</TagText>
-                      </Tag>
-                    )}
-                  </Outer>,
-                ])
+                return (
+                  <TagView
+                    selectedTags={app.searchTags}
+                    availableTags={listMyTags.items}
+                    filterString={app.searchTerm}
+                    addTag={addSearchTag}
+                    removeTag={removeSearchTag}
+                  />
+                )
               }}
             </Query>
           )
@@ -87,23 +76,5 @@ class TagSelect extends Component {
 
 }
 
-const Outer = styled.ScrollView`
-  background: #000;
-`
-
-const Tag = styled.TouchableOpacity`
-  margin: 10px 5px;
-  padding: 10px;
-  border: 2px dotted ${colors.primary};
-  border-radius: 5px;
-  height: 45px;
-  background: ${props => props.active ? colors.primary : 'black'};
-  flex-direction: row;
-  align-items: center;
-`
-
-const TagText = styled.Text`
-  color: ${props => props.active ? 'black' : colors.primary};
-`
 
 export default TagSelect 
