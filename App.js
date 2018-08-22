@@ -1,10 +1,8 @@
 import React from 'react';
 import { Asset, Font, AppLoading } from 'expo'
 import aws_exports from './aws-exports';
-import AWSAppSyncClient from 'aws-appsync';
-import ApolloClient from 'apollo-boost'
-import Amplify, { Auth } from 'aws-amplify';
-import { AUTH_TYPE } from 'aws-appsync/lib/link/auth-link';
+import client from './ApolloAppSyncClient'
+import Amplify from 'aws-amplify';
 import { ApolloProvider } from 'react-apollo';
 import { Rehydrated } from 'aws-appsync-react';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
@@ -23,32 +21,9 @@ import TestScreen from './screens/TestScreen'
 
 Amplify.configure(aws_exports);
 
-export const client = new AWSAppSyncClient({
-  url: aws_exports.aws_appsync_graphqlEndpoint,
-  region: aws_exports.aws_appsync_region,
-  auth: {
-    type: AUTH_TYPE.AWS_IAM,
-    credentials: () => {
-      return Auth.currentCredentials()
-    }
-  },
-  disableOffline: true,
-})
-
-// export const client = new ApolloClient({
-//   uri: aws_exports.aws_appsync_graphqlEndpoint,
-//   request: async (operation) => {
-//     operation.setContext({
-//       headers: {
-//         'X-Api-Key': 'da2-3hxvdaiazvdtzfrnfnqgwuupsa',
-//       }
-//     })
-//   }
-// })
-
 const AppStack = createStackNavigator(
   {
-    Home: HomeScreen, // TODO: Just pas props to this for search? Context = bad?
+    Home: HomeScreen, // TODO: Just pass props to this for search? Context = bad?
     CreateFold: CreateFoldScreen,
     About: AboutScreen,
     Test: TestScreen,
