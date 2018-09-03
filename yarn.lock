@@ -2,72 +2,72 @@
 # yarn lockfile v1
 
 
-"@aws-amplify/analytics@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/analytics/-/analytics-1.0.4.tgz#fb1237656aaaff0dc1f8d53702c36e8c4c10a96d"
+"@aws-amplify/analytics@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/analytics/-/analytics-1.0.7.tgz#5b609ba16239cd89f21990d699e74a5548d13609"
   dependencies:
-    "@aws-amplify/cache" "^1.0.3"
-    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/cache" "^1.0.7"
+    "@aws-amplify/core" "^1.0.7"
     aws-sdk "2.198.0"
     uuid "^3.2.1"
 
-"@aws-amplify/api@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/api/-/api-1.0.5.tgz#e36914541b3624d386728f9a0ed33f01721dc6e2"
+"@aws-amplify/api@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/api/-/api-1.0.8.tgz#08e79d77810d515f79c506560f6e7d0781c37022"
   dependencies:
-    "@aws-amplify/auth" "^1.0.5"
-    "@aws-amplify/cache" "^1.0.3"
-    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/auth" "^1.0.8"
+    "@aws-amplify/cache" "^1.0.7"
+    "@aws-amplify/core" "^1.0.7"
     "@types/zen-observable" "^0.5.3"
     axios "^0.17.0"
     graphql "0.13.0"
     zen-observable "^0.8.6"
 
-"@aws-amplify/auth@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-1.0.5.tgz#1db9886f62b5b89ff74e056a3868c63cf3fec83a"
+"@aws-amplify/auth@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/auth/-/auth-1.0.8.tgz#d4e581ef560097e6686c6815b6b7c819c2b14a65"
   dependencies:
-    "@aws-amplify/cache" "^1.0.3"
-    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/cache" "^1.0.7"
+    "@aws-amplify/core" "^1.0.7"
     amazon-cognito-auth-js "^1.1.9"
-    amazon-cognito-identity-js "^2.0.20"
+    amazon-cognito-identity-js "^2.0.23"
 
-"@aws-amplify/cache@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/cache/-/cache-1.0.4.tgz#bc7d624cc1a4365e6cd6c0299793008c1af35102"
+"@aws-amplify/cache@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/cache/-/cache-1.0.7.tgz#d70be9ec6314268f601b9c74604d55fb3fbe1a00"
   dependencies:
-    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/core" "^1.0.7"
 
-"@aws-amplify/core@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/core/-/core-1.0.4.tgz#595fd9773bb9038be49dd956bb2f9671296d9c10"
+"@aws-amplify/core@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/core/-/core-1.0.7.tgz#b30e9871e18b46110d07c0accd29d9156cb369ac"
   dependencies:
     aws-sdk "2.198.0"
     url "^0.11.0"
 
-"@aws-amplify/interactions@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/interactions/-/interactions-1.0.4.tgz#b745c818331c26d17759f041120542ff997777a5"
+"@aws-amplify/interactions@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/interactions/-/interactions-1.0.7.tgz#8e5cde3fd8b58a0801518a059f243b505508deed"
   dependencies:
-    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/core" "^1.0.7"
     aws-sdk "2.198.0"
 
-"@aws-amplify/pubsub@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/pubsub/-/pubsub-1.0.4.tgz#2a45f2e0628666b4d5cb3c3e8062c4c30c38eaf4"
+"@aws-amplify/pubsub@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/pubsub/-/pubsub-1.0.7.tgz#d39c534649cebc8dca6a138335577d3a891964be"
   dependencies:
-    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/core" "^1.0.7"
     "@types/paho-mqtt" "^1.0.3"
     "@types/zen-observable" "^0.5.3"
     paho-mqtt "^1.0.4"
     uuid "^3.2.1"
     zen-observable "^0.8.6"
 
-"@aws-amplify/storage@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/storage/-/storage-1.0.4.tgz#44a3d44d27e6737fad9d92a037b5caed1d7c5b1d"
+"@aws-amplify/storage@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/storage/-/storage-1.0.7.tgz#833cb6639f612e4f297ed61c42a16b67194ee2b9"
   dependencies:
-    "@aws-amplify/core" "^1.0.3"
+    "@aws-amplify/core" "^1.0.7"
     aws-sdk "2.198.0"
 
 "@babel/code-frame@7.0.0-rc.1", "@babel/code-frame@^7.0.0-beta.35":
@@ -646,10 +646,6 @@
     component-type "^1.2.1"
     join-component "^1.1.0"
 
-"@types/async@2.0.47":
-  version "2.0.47"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.47.tgz#f49ba1dd1f189486beb6e1d070a850f6ab4bd521"
-
 "@types/async@2.0.49":
   version "2.0.49"
   resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.49.tgz#92e33d13f74c895cb9a7f38ba97db8431ed14bc0"
@@ -752,9 +748,9 @@ amazon-cognito-auth-js@^1.1.9:
   dependencies:
     js-cookie "^2.1.4"
 
-amazon-cognito-identity-js@^2.0.20:
-  version "2.0.20"
-  resolved "https://registry.yarnpkg.com/amazon-cognito-identity-js/-/amazon-cognito-identity-js-2.0.20.tgz#07572da3c31569e66953b7c4f602e456499c8852"
+amazon-cognito-identity-js@^2.0.23:
+  version "2.0.23"
+  resolved "https://registry.yarnpkg.com/amazon-cognito-identity-js/-/amazon-cognito-identity-js-2.0.23.tgz#46cf1565754f45fc15a4f6ffb93e900df335b424"
   dependencies:
     buffer "4.9.1"
     crypto-browserify "1.0.9"
@@ -843,20 +839,20 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apollo-boost@^0.1.13:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/apollo-boost/-/apollo-boost-0.1.13.tgz#194ad4527eb7cad0ac491f133f314b9ae9f31286"
+apollo-boost@^0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/apollo-boost/-/apollo-boost-0.1.15.tgz#86357437fe150383d9c75f483cf656013c243258"
   dependencies:
-    apollo-cache "^1.1.14"
-    apollo-cache-inmemory "^1.2.7"
-    apollo-client "^2.3.8"
+    apollo-cache "^1.1.16"
+    apollo-cache-inmemory "^1.2.9"
+    apollo-client "^2.4.1"
     apollo-link "^1.0.6"
     apollo-link-error "^1.0.3"
     apollo-link-http "^1.3.1"
     apollo-link-state "^0.4.0"
     graphql-tag "^2.4.2"
 
-apollo-cache-inmemory@^1.0.0, apollo-cache-inmemory@^1.2.7:
+apollo-cache-inmemory@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.2.7.tgz#80517c4b5e910022ab8d318f47d9364f99db8541"
   dependencies:
@@ -864,39 +860,25 @@ apollo-cache-inmemory@^1.0.0, apollo-cache-inmemory@^1.2.7:
     apollo-utilities "^1.0.18"
     graphql-anywhere "^4.1.16"
 
-apollo-cache-inmemory@^1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.2.8.tgz#98be86fe7023dffd8ec86675c631a2b73e8c8308"
+apollo-cache-inmemory@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/apollo-cache-inmemory/-/apollo-cache-inmemory-1.2.9.tgz#26e0c8c6a6c865bf9987d741114388cdbc3fae23"
   dependencies:
-    apollo-cache "^1.1.15"
-    apollo-utilities "^1.0.19"
-    graphql-anywhere "^4.1.17"
+    apollo-cache "^1.1.16"
+    apollo-utilities "^1.0.20"
+    graphql-anywhere "^4.1.18"
+
+apollo-cache@1.1.16, apollo-cache@^1.1.16:
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.16.tgz#0c7460ee8eff1898462979143b4e922aaba73cf8"
+  dependencies:
+    apollo-utilities "^1.0.20"
 
 apollo-cache@^1.1.13, apollo-cache@^1.1.14:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.14.tgz#c7d54cdbc7f544161f78fa5e4bae56650e22f7ad"
   dependencies:
     apollo-utilities "^1.0.18"
-
-apollo-cache@^1.1.15, apollo-cache@^1.1.5:
-  version "1.1.15"
-  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.15.tgz#48d3a366047fc4b876c2036a79b0e070dee74cc1"
-  dependencies:
-    apollo-utilities "^1.0.19"
-
-apollo-client@2.2.6:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.2.6.tgz#38b5a197976f3c22b63623c455d4c4606e420b66"
-  dependencies:
-    "@types/zen-observable" "^0.5.3"
-    apollo-cache "^1.1.5"
-    apollo-link "^1.0.0"
-    apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.9"
-    symbol-observable "^1.0.2"
-    zen-observable "^0.7.0"
-  optionalDependencies:
-    "@types/async" "2.0.47"
 
 apollo-client@2.3.7:
   version "2.3.7"
@@ -912,29 +894,15 @@ apollo-client@2.3.7:
   optionalDependencies:
     "@types/async" "2.0.49"
 
-apollo-client@^2.3.8:
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.3.8.tgz#0384a7210eb601ab88b1c13750da076fc9255b95"
+apollo-client@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.1.tgz#d2ebaac1831fa170f7d0070bb9d581cccb5f64e3"
   dependencies:
     "@types/zen-observable" "^0.8.0"
-    apollo-cache "^1.1.14"
+    apollo-cache "1.1.16"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.18"
-    symbol-observable "^1.0.2"
-    zen-observable "^0.8.0"
-  optionalDependencies:
-    "@types/async" "2.0.49"
-
-apollo-client@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.4.0.tgz#438d2dc84316ee76032ae70fb7febe3c3d62a2fb"
-  dependencies:
-    "@types/zen-observable" "^0.8.0"
-    apollo-cache "^1.1.15"
-    apollo-link "^1.0.0"
-    apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.19"
+    apollo-utilities "1.0.20"
     symbol-observable "^1.0.2"
     zen-observable "^0.8.0"
   optionalDependencies:
@@ -964,7 +932,7 @@ apollo-link-http-common@^0.2.4:
   dependencies:
     apollo-link "^1.2.2"
 
-apollo-link-http@^1.0.0, apollo-link-http@^1.3.1:
+apollo-link-http@^1.0.0, apollo-link-http@^1.3.1, apollo-link-http@^1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-1.5.4.tgz#b80b7b4b342c655b6a5614624b076a36be368f43"
   dependencies:
@@ -986,15 +954,15 @@ apollo-link@^1.0.0, apollo-link@^1.0.6, apollo-link@^1.2.2:
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.9"
 
-apollo-utilities@^1.0.0, apollo-utilities@^1.0.17, apollo-utilities@^1.0.18, apollo-utilities@^1.0.8:
-  version "1.0.18"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.18.tgz#e4ee91534283fde2b744a26caaea120fe6a94f67"
+apollo-utilities@1.0.20, apollo-utilities@^1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.20.tgz#b14318686cb67838279fb5f009cca0ec97a4d140"
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
-apollo-utilities@^1.0.19, apollo-utilities@^1.0.9:
-  version "1.0.19"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.19.tgz#f2d253bb8aa1395b62ded2f7749884233b5838e2"
+apollo-utilities@^1.0.0, apollo-utilities@^1.0.17, apollo-utilities@^1.0.18, apollo-utilities@^1.0.8:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.18.tgz#e4ee91534283fde2b744a26caaea120fe6a94f67"
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
@@ -1182,45 +1150,27 @@ auth0@2.9.1:
     rest-facade "^1.10.0"
     retry "^0.10.1"
 
-aws-amplify@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/aws-amplify/-/aws-amplify-1.0.5.tgz#b2dc7ade8b0d7a04f3ed6db2dda0cc004c92e65e"
+aws-amplify@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/aws-amplify/-/aws-amplify-1.0.8.tgz#6fda1a88851fb5462031e61853458b9ca9bb0099"
   dependencies:
-    "@aws-amplify/analytics" "^1.0.3"
-    "@aws-amplify/api" "^1.0.5"
-    "@aws-amplify/auth" "^1.0.5"
-    "@aws-amplify/cache" "^1.0.3"
-    "@aws-amplify/core" "^1.0.3"
-    "@aws-amplify/interactions" "^1.0.3"
-    "@aws-amplify/pubsub" "^1.0.3"
-    "@aws-amplify/storage" "^1.0.3"
+    "@aws-amplify/analytics" "^1.0.7"
+    "@aws-amplify/api" "^1.0.8"
+    "@aws-amplify/auth" "^1.0.8"
+    "@aws-amplify/cache" "^1.0.7"
+    "@aws-amplify/core" "^1.0.7"
+    "@aws-amplify/interactions" "^1.0.7"
+    "@aws-amplify/pubsub" "^1.0.7"
+    "@aws-amplify/storage" "^1.0.7"
 
-aws-appsync-react@1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/aws-appsync-react/-/aws-appsync-react-1.1.3.tgz#3a9fe643e5c93df9c59a976e8ad19d830ea5c4d3"
+aws-appsync-react@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/aws-appsync-react/-/aws-appsync-react-1.1.4.tgz#afc1d6cff8b94462883e2b6fbc065887aabeea76"
   dependencies:
-    aws-appsync "^1.3.3"
+    aws-appsync "^1.3.4"
     prop-types "^15.6.0"
 
-aws-appsync@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/aws-appsync/-/aws-appsync-1.3.2.tgz#ab0acb1b225138571d413fb9dd0740fa72dd7f47"
-  dependencies:
-    "@redux-offline/redux-offline" "^2.2.1"
-    apollo-cache-inmemory "^1.0.0"
-    apollo-client "2.2.6"
-    apollo-link "^1.0.0"
-    apollo-link-context "^1.0.0"
-    apollo-link-http "^1.0.0"
-    aws-sdk "^2.139.0"
-    graphql "^0.11.7"
-    redux "^3.7.2"
-    redux-thunk "^2.2.0"
-    setimmediate "^1.0.5"
-    url "^0.11.0"
-    uuid "3.x"
-
-aws-appsync@^1.3.3:
+aws-appsync@1.3.4, aws-appsync@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/aws-appsync/-/aws-appsync-1.3.4.tgz#cff1c2b496e1054f6340538003b689552be43c57"
   dependencies:
@@ -1255,6 +1205,20 @@ aws-sdk@2.198.0:
 aws-sdk@^2.139.0:
   version "2.291.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.291.0.tgz#e5ea6bc5dc1899902e4de2bf1d5fc886def3599e"
+  dependencies:
+    buffer "4.9.1"
+    events "1.1.1"
+    ieee754 "1.1.8"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.1.0"
+    xml2js "0.4.19"
+
+aws-sdk@^2.307.0:
+  version "2.307.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.307.0.tgz#53a5906d36061d62e7b2ceb243920c7ef8feac97"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -3526,11 +3490,11 @@ graphql-anywhere@^4.1.0-alpha.0, graphql-anywhere@^4.1.16:
   dependencies:
     apollo-utilities "^1.0.18"
 
-graphql-anywhere@^4.1.17:
-  version "4.1.17"
-  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.17.tgz#5c9128d0c5c1623dc46ecbdf0916845061f1965a"
+graphql-anywhere@^4.1.18:
+  version "4.1.18"
+  resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-4.1.18.tgz#29bfc5d42bf8ee1f5cdc9a9857c98c3eb4b7fab4"
   dependencies:
-    apollo-utilities "^1.0.19"
+    apollo-utilities "^1.0.20"
 
 graphql-tag@^2.4.2, graphql-tag@^2.9.2:
   version "2.9.2"
@@ -3548,11 +3512,11 @@ graphql@^0.11.7:
   dependencies:
     iterall "1.1.3"
 
-graphql@^0.13.2:
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.2.tgz#4c740ae3c222823e7004096f832e7b93b2108270"
+graphql@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-14.0.0.tgz#4ee771c5266d08cb75df2d3ac41e8dd51ce3d599"
   dependencies:
-    iterall "^1.2.1"
+    iterall "^1.2.2"
 
 growly@^1.3.0:
   version "1.3.0"
@@ -4191,7 +4155,7 @@ iterall@1.1.x:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.1.4.tgz#0db40d38fdcf53ae14dc8ec674e62ab190d52cfc"
 
-iterall@^1.2.1:
+iterall@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
 
@@ -7932,10 +7896,6 @@ zen-observable-ts@^0.8.9:
   resolved "https://registry.yarnpkg.com/zen-observable-ts/-/zen-observable-ts-0.8.9.tgz#d3c97af08c0afdca37ebcadf7cc3ee96bda9bab1"
   dependencies:
     zen-observable "^0.8.0"
-
-zen-observable@^0.7.0:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
 
 zen-observable@^0.8.0, zen-observable@^0.8.6:
   version "0.8.9"

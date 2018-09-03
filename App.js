@@ -2,7 +2,7 @@ import React from 'react';
 import { Asset, Font, AppLoading } from 'expo'
 import aws_exports from './aws-exports';
 import client from './ApolloAppSyncClient'
-import Amplify from 'aws-amplify';
+import Amplify, { Auth } from 'aws-amplify';
 import { ApolloProvider } from 'react-apollo';
 import { Rehydrated } from 'aws-appsync-react';
 import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
@@ -19,7 +19,19 @@ import { MenuProvider } from 'react-native-popup-menu'
 import ToolbarMenu from './containers/ToolbarMenu'
 import TestScreen from './screens/TestScreen'
 
-Amplify.configure(aws_exports);
+
+Amplify.configure({
+  identityPoolId: 'us-east-1:bb103896-c351-4045-81ad-853de0071839',
+  // REQUIRED - Amazon Cognito Region
+  region: 'us-east-1',
+  // OPTIONAL - Amazon Cognito User Pool ID
+  userPoolId: 'us-east-1_GhO9ocbq2',
+  // OPTIONAL - Amazon Cognito Web Client ID
+  userPoolWebClientId: '2bonp9g49d5v7t976i0qkaaq4l',
+});
+
+// Auth.signOut()
+
 
 const AppStack = createStackNavigator(
   {
@@ -88,7 +100,6 @@ export default class App extends React.Component {
     setSearchTerm: this.setSearchTerm,
     setSearchTags: this.setSearchTags,
   }
-
   render() {
 
     if (!this.state.isReady) {

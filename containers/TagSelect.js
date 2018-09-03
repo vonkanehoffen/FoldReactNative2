@@ -52,7 +52,7 @@ class TagSelect extends Component {
 
           return (
             <Query query={listMyTagsQuery}>
-              {({ loading, error, data: { listMyTags } }) => {
+              {({ loading, error, data }) => {
 
                 if (loading) return <Text>Loading...</Text>;
                 if (error) return <Text>Error :(</Text>;
@@ -60,7 +60,7 @@ class TagSelect extends Component {
                 return (
                   <TagView
                     selectedTags={app.searchTags}
-                    availableTags={listMyTags.items}
+                    availableTags={data.listMyTags.items}
                     filterString={app.searchTerm}
                     addTag={addSearchTag}
                     removeTag={removeSearchTag}

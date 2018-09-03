@@ -7,7 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { colors } from '../config'
 import { withNavigation } from 'react-navigation'
 import { Auth } from 'aws-amplify'
-import { client } from '../App'
+import client from '../ApolloAppSyncClient'
 
 class ToolbarMenu extends React.Component {
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
 import styled from 'styled-components'
 import listMyFoldsQuery from '../queries/listMyFolds'
-import { ActivityIndicator, Button, ScrollView } from 'react-native'
+import { ActivityIndicator, Button, ScrollView, View } from 'react-native'
 import Error from '../components/Error'
 import Fold from '../components/Fold'
 import FullScreenLoading from '../components/FullScreenLoading'
@@ -35,7 +35,7 @@ class MyFolds extends Component {
 
               return (
                 <Outer>
-                  {/*<Button onPress={() => refetch()} title="Refetch!"/>*/}
+                  <Button onPress={() => refetch()} title="Refetch!"/>
                   {data.listMyFolds.items
                     .filter(fold => {
                       if(app.searchTerm.length < 1 && app.searchTags.length < 1) return true
