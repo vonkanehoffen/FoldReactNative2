@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { View, Text } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import { colors } from '../config'
 import CardTag from './CardTag'
 // import DeleteFold from '../containers/DeleteFold'
@@ -15,14 +15,16 @@ const Fold = ({ fold }) => {
       <Tags>
         {fold.tags.map(tag => <CardTag key={tag}>{tag}</CardTag>)}
       </Tags>
+      {fold.id < 0 && <ActivityIndicator size="small" color={colors.primary}/>}
       {/*<DeleteFold id={fold.id}/>*/}
     </Outer>
   )
 }
 
 const Outer = styled.View`
-  background: ${props => props.loading ? 'palegreen' : props.color};
+  background: ${props => props.loading ? 'black' : props.color};
   margin-top: 10px;
+  ${props => props.loading && 'border: 1px solid #fff;'}
 `
 
 const Title = styled.Text`

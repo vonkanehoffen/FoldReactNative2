@@ -17,7 +17,9 @@ class MyFolds extends Component {
     return (
       <AppContext.Consumer>
         {app => (
-          <Query query={listMyFoldsQuery}>
+          <Query
+            fetchPolicy="cache-and-network"
+            query={listMyFoldsQuery}>
             {({ data, loading, error, refetch}) => {
 
               if(loading) return <FullScreenLoading/>

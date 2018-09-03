@@ -51,18 +51,26 @@ class CreateFoldScreen extends Component {
       <Mutation
         mutation={createFoldQuery}
         variables={this.state}
-        update={(cache, { data: { createFold }}) => {
-          const { listMyFolds }  = cache.readQuery({ query: listMyFoldsQuery })
-          cache.writeQuery({
-            query: listMyFoldsQuery,
-            data: { listMyFolds: { ...listMyFolds, items: [ createFold, ...listMyFolds.items ] } }
-          })
-          // this.setState({ title: '', uri: '', content: '', tags: []})
-          this.props.navigation.navigate('Home')
+        update={(dataProxy, { data: { createFold } }) => {
+          const query = listMyFoldsQuery;
+          const data = dataProxy.readQuery({ query });
+          console.log('MUTATE:', createFold)
+          data.listMyFolds.items.unshift(createFold);
+          dataProxy.writeQuery({ query, data });
         }}
+          //
+          // (cache, { data: { createFold }}) => {
+          // const { listMyFolds }  = cache.readQuery({ query: listMyFoldsQuery })
+          // cache.writeQuery({
+          //   query: listMyFoldsQuery,
+          //   data: { listMyFolds: { ...listMyFolds, items: [ createFold, ...listMyFolds.items ] } }
+          // })
+          // this.setState({ title: '', uri: '', content: '', tags: []})
+          // this.props.navigation.navigate('Home')
+          // }}
         optimisticResponse={{
           createFold: {
-            title,
+            title: title,
             uri,
             content,
             tags,
@@ -71,8 +79,10 @@ class CreateFoldScreen extends Component {
             createdAt: new Date().getTime(),
             updatedAt: new Date().getTime(),
             __typename: 'Fold',
+            version: 1,
           }
         }}
+        refetchQueries={[listMyFoldsQuery]}
       >
         {(createFold, response) => {
           if(response.loading) return <ActivityIndicator/>
@@ -81,7 +91,7 @@ class CreateFoldScreen extends Component {
           return (
               <ScrollView>
                 <TextFieldLight
-                  label="Title"
+                  label="Title simple"
                   value={this.state.title}
                   onChangeText={title => this.setState({title})}
                 />

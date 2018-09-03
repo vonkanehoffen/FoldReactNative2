@@ -34,7 +34,10 @@ class CreateTagSelect extends Component {
 
   render() {
     return (
-      <Query query={listMyTagsQuery}>
+      <Query
+        query={listMyTagsQuery}
+        fetchPolicy="cache-and-network"
+      >
         {({ loading, error, data: { listMyTags } }) => {
           if (loading) return <Text>Loading...</Text>;
           if (error) return <Text>Error :(</Text>;
