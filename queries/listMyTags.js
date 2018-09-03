@@ -4,6 +4,7 @@ export default gql`
   query lisyMyTags {
     listMyTags {
       items {
+        __typename
         slug
       }
     }

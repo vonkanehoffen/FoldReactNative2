@@ -4,6 +4,7 @@ export default gql`
   query listMyFolds {
     listMyFolds {
       items {
+        __typename
         id
         ownerId
         uri
